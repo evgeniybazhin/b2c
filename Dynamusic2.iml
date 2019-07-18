@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DCS/lib/resources.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DCS/lib/classes.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DSS/lib/resources.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DSS/lib/classes.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DPS/lib/resources.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DPS/lib/classes.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/resources.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/classes.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/servlet.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/ice.jar" />
+    <libelement value="file://$MODULE_DIR$/../../ATG2006.3/DAS/solid/SolidDriver2.1.jar" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/classes" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="resources.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DCS/lib/resources.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="classes.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DCS/lib/classes.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="$MODULE_DIR$/../../ATG2006.3/DSS/lib/resources.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DSS/lib/resources.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="$MODULE_DIR$/../../ATG2006.3/DSS/lib/classes.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DSS/lib/classes.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="$MODULE_DIR$/../../ATG2006.3/DPS/lib/resources.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DPS/lib/resources.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="$MODULE_DIR$/../../ATG2006.3/DPS/lib/classes.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DPS/lib/classes.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="$MODULE_DIR$/../../ATG2006.3/DAS/lib/resources.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/resources.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="$MODULE_DIR$/../../ATG2006.3/DAS/lib/classes.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/classes.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="servlet.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/servlet.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="ice.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DAS/lib/ice.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="SolidDriver2.1.jar">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../ATG2006.3/DAS/solid/SolidDriver2.1.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="inheritedJdk" />
+  </component>
+</module>
