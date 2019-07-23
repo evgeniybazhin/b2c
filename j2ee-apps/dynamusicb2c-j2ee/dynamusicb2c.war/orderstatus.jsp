@@ -29,7 +29,9 @@
           <font face="Verdana,Geneva,Arial" color="midnightblue">
 
 <%-- Ch. 8, Ex. 2, Step 2: Display order number --%>
-
+<br>
+            Number order: <dsp:valueof bean="ShoppingCart.last.id"/>
+            Thank you!
 
 
 

@@ -1,4 +1,4 @@
-<%@ taglib uri="/dspTaglib" prefix="dsp" %>
+<%@ taglib uri="http://www.atg.com/taglibs/daf/dspjspTaglib1_0" prefix="dsp" %>
 <dsp:page>
 <dsp:importbean bean="/atg/commerce/order/purchase/CartModifierFormHandler"/>
 

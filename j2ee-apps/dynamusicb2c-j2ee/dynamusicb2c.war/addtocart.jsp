@@ -6,7 +6,7 @@
 <!-- Title: Add to Cart Fragment -->
 
 
-<%@ taglib uri="/dspTaglib" prefix="dsp" %>
+<%@ taglib uri="http://www.atg.com/taglibs/daf/dspjspTaglib1_0" prefix="dsp" %>
 <dsp:page>
 
 <%-- Import CartModifierFormHandler component --%>
