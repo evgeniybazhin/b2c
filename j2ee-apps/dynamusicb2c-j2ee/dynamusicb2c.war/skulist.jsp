@@ -1,4 +1,4 @@
-<%@ taglib uri="http://www.atg.com/taglibs/daf/dspjspTaglib1_0" prefix="dsp" %>
+<%@ taglib uri="/dspTaglib" prefix="dsp" %>
 <dsp:page>
 <dsp:importbean bean="/atg/commerce/order/purchase/CartModifierFormHandler"/>
 
@@ -32,8 +32,18 @@
       <%-- Chapter 5, Ex. 1: include discountedprice.jsp to display list and discounted price --%>
       <%-- pass product (passed in from genericproduct.jsp) and sku (from the ForEach here) as parameters named product and sku --%>
     
-     <dsp:valueof converter="currency" param="sku.listPrice"/>
- 
+    <dsp:include page="discountprice.jsp" flush="true">
+    	<dsp:param name="product" param="product"/>
+     	<dsp:param name="sku" param="sku"/>
+    </dsp:include>
+    
+    <%-- Chapter 7, Exercise 1 --%>
+    <%-- Insert Add to Cart button here --%>
+     
+    	<dsp:include page="addtocart.jsp" flush="true">
+    		<dsp:param name="skuId" param="sku.repositoryId"/>
+    		<dsp:param name="productId" param="product.repositoryId"/>
+	</dsp:include>
   </dsp:oparam>
   <dsp:oparam name="empty">
     There are no SKUS to display for this product.

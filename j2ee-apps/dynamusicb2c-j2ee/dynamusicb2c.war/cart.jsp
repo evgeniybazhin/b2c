@@ -1,4 +1,4 @@
-<%@ taglib uri="http://www.atg.com/taglibs/daf/dspjspTaglib1_0" prefix="dsp" %>
+<%@ taglib uri="/dspTaglib" prefix="dsp" %>
 <dsp:page>
 <dsp:importbean bean="/atg/userprofiling/Profile"/>
 <dsp:importbean bean="/atg/commerce/order/purchase/CartModifierFormHandler"/>
@@ -7,7 +7,7 @@
 <!-- ATG Training -->
 <!-- Creating Commerce Applications Part I -->
 <!-- Cart Page -->
-<!-- Last modified: 26 Aug 02 by KL -->
+<!-- Last modified: 1 May 07 by RM -->
 
 <HTML>
   <HEAD>
@@ -26,6 +26,13 @@
         <!-- Page Body -->
         <td valign="top">
           <font face="Verdana,Geneva,Arial" color="midnightblue">
+          
+<%-- Chapter 7, Exercise 4, Step 3: Reprice the order when the page is loaded --%>
+
+<dsp:droplet name="/atg/commerce/order/purchase/RepriceOrderDroplet">
+	<dsp:param name="pricingOp" value="ORDER_TOTAL" />
+</dsp:droplet>
+
 
 <%-- Chapter 7, Exercise 3, Step 1: Error Handling --%>
 
@@ -43,32 +50,25 @@
 </dsp:droplet>
 
 <%-- Chapter 7, Exercise 2 --%>
-<%-- Loop through ShippingGroups, then through CommerceItemRelationships to 
-display each Commerce Item. Place in form. --%>
+<%-- Loop through Commerce Items in the current Order object. Place in form. --%>
 <p>
 <dsp:form method="post" action="cart.jsp">
   <dsp:droplet name="/atg/dynamo/droplet/ForEach">
-    <dsp:param name="array" bean="CartModifierFormHandler.order.ShippingGroups"/>
+    <dsp:param name="array" bean="CartModifierFormHandler.order.commerceItems"/>
       
       <dsp:oparam name="output">
-      <dsp:param param="element" name="ShippingGroup"/>
-    	<dsp:droplet name="/atg/dynamo/droplet/ForEach">
-          <dsp:param name="array" param="ShippingGroup.CommerceItemRelationships"/>
-	  
-      	  <dsp:oparam name="output">
-      	  <dsp:param param="element" name="CIRelationship"/>
+      	<dsp:param name="Ci" param="element" />
 	    <b>Quantity:</b>
-	      <input name='<dsp:valueof param="CIRelationship.Id"/>' value='<dsp:valueof param="CIRelationship.quantity"/>' size="2">&nbsp;
+	      <input name='<dsp:valueof param="Ci.id"/>' value='<dsp:valueof param="Ci.quantity"/>' size="2">&nbsp;
 <br> 
-            <b>Name:</b> <dsp:valueof param="CIRelationship.commerceItem.auxiliaryData.catalogRef.displayName"/><br>
-            <b>Price:</b> <dsp:valueof param="CIRelationship.commerceItem.priceInfo.rawTotalPrice" converter="currency"/><br>
-            <b>Amount:</b> <dsp:valueof param="CIRelationship.commerceItem.priceInfo.amount" converter="currency"/><br><br>
+            <b>Name:</b> <dsp:valueof param="Ci.auxiliaryData.catalogRef.displayName"/><br>
+            <b>Original Price:</b> <dsp:valueof param="Ci.priceInfo.rawTotalPrice" converter="currency"/><br>
+            <b>Your Price:</b> <dsp:valueof param="Ci.priceInfo.amount" converter="currency"/><br><br>
 
-      	  </dsp:oparam>
-      	  <dsp:oparam name="empty">
+      </dsp:oparam>
+      <dsp:oparam name="empty">
             Cart is Empty!!!!
-      	  </dsp:oparam>
-    	</dsp:droplet>
+ 
       </dsp:oparam>
   </dsp:droplet>
 
@@ -77,20 +77,22 @@ display each Commerce Item. Place in form. --%>
   <font face="Verdana,Geneva,Arial" size="+2" color="midnightblue">Shopping Cart Totals:</font><p>
   <font face="Verdana,Geneva,Arial" color="midnightblue">
 
-<%-- Chapter 7, Exercise 4: Display Order Total and Recalculate Button --%>
-<!-- Order Subtotal and Total -->
-  <b>Subtotal:</b> <dsp:valueof bean="ShoppingCart.current.priceInfo.amount" converter="currency">no price</dsp:valueof><br>
-  <b>Shipping:</b> <dsp:valueof bean="ShoppingCart.current.priceInfo.shipping" converter="currency">no shipping</dsp:valueof><br>
-  <b>Total:</b> <dsp:valueof bean="ShoppingCart.current.priceInfo.total" converter="currency">no total</dsp:valueof>
+<%-- Chapter 7, Exercise 4: Display Order Subtotal and Recalculate Button --%>
+<!-- Order Subtotal -->
+  <b>Order Subtotal:</b> <dsp:valueof bean="ShoppingCart.current.priceInfo.amount" converter="currency">no price</dsp:valueof><br>
 
 <!-- Recalculate Button -->
 <p>
-  <dsp:input type="submit" bean="CartModifierFormHandler.setOrderByRelationshipId" value="Recalculate"/>
+  <dsp:input type="submit" bean="CartModifierFormHandler.setOrderByCommerceId" value="Recalculate"/>
+
+<%-- Chapter 9, Exercise 1, Step 4: Test ShippingGroup Address --%>
+
 
 <%-- Chapter 7, Exercise 3, Step 2: Add Checkout Button --%>
-  <dsp:input type="submit" bean="CartModifierFormHandler.moveToPurchaseInfoByRelId" value="Checkout"/>
-  <dsp:input type="hidden" bean="CartModifierFormHandler.moveToPurchaseInfoByRelIdSuccessURL" value="purchaseinfo.jsp"/>
+  <dsp:input type="submit" bean="CartModifierFormHandler.moveToPurchaseInfoByCommerceId" value="Checkout"/>
   
+  <dsp:input type="hidden" bean="CartModifierFormHandler.moveToPurchaseInfoSuccessURL" value="purchaseinfo.jsp"/>
+
 </dsp:form>
 <p>
 <%-- Chapter 7, Optional Exercise 7: Display User's Promotions --%>
@@ -98,9 +100,9 @@ display each Commerce Item. Place in form. --%>
 <p>
 
 <dsp:droplet name="/atg/dynamo/droplet/ForEach">
-  <dsp:param bean="Profile.activePromotions" name="array"/>
+  <dsp:param bean="/atg/commerce/pricing/UserPricingModels.allPromotions" name="array"/>
   <dsp:oparam name="output">
-    <li><dsp:valueof param="element.promotion.displayName"/>
+    <li><dsp:valueof param="element.displayName"/>
   </dsp:oparam>
   <dsp:oparam name="empty">
     You do not have any Promotions!

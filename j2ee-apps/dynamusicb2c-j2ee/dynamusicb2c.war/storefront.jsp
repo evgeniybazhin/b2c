@@ -1,6 +1,15 @@
 <%@ taglib uri="http://www.atg.com/taglibs/daf/dspjspTaglib1_0" prefix="dsp" %>
 <dsp:page>
-    
+
+<!-- ATG Training -->
+<!-- Creating Commerce Applications -->
+<!-- storefront page to loop through rootCategories property -->
+<!-- Last modified: 1 May 07 by RM -->
+
+<!-- this is a holder page for the chapter 3 labs -->
+
+<!-- Title: DynamusicB2C Storefront -->
+
 <HTML>
   <HEAD>
     <TITLE>Dynamusic Store</TITLE>
@@ -13,7 +22,7 @@
       <tr>
         <!-- Sidebar -->
         <td width="100" bgcolor="ghostwhite" valign="top">
-          <dsp:include page="navbar.jsp">
+          <dsp:include page="common/sidebar.jsp">
           </dsp:include>
         </td>
         <!-- Page Body -->
@@ -29,8 +38,11 @@
      <p>
         <dsp:getvalueof id="templateURL" idtype="java.lang.String" param="element.template.url">
            <dsp:a href="<%= templateURL %>">
-              <dsp:param name="id" param="element.repositoryId"/>
+	      <dsp:param name="id" param="element.repositoryId"/>
               <dsp:valueof param="element.displayName"/>
+<%-- Chapter 4, Exercise 2: Display Navigation History --%>
+          <dsp:param name="navCount" bean="/atg/commerce/catalog/CatalogNavHistory.navCount"/>
+          <dsp:param name="navAction" value="jump"/>
            </dsp:a>
         </dsp:getvalueof>
    </dsp:oparam>
